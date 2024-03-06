@@ -1,4 +1,4 @@
-client = OpenAI()
+        client = OpenAI()
     
         # Cargar variables de entorno desde el archivo .env
         load_dotenv()

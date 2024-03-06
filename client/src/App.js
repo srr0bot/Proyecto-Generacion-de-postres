@@ -4,21 +4,7 @@ import "primereact/resources/themes/arya-blue/theme.css";
 function App() {
   const [seleccion, setSeleccion] = useState({});
   const [ingredientes, setIngredientes] = useState([]);
-  const [respuesta, setRespuesta] = useState('')
-
-  /*useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/openai')
-        const data = await response.json()
-        setRespuesta(data.response)
-      } catch (error) {
-        console.error('Error: ', error)
-      }
-    }
-    fetchData()
-  }, [])
-  */
+  const [respuesta, setRespuesta] = useState([])
 
   useEffect(() => {
     async function fetchIngredientes() {
@@ -30,7 +16,6 @@ function App() {
         console.error('Error al cargar los ingredientes:', error)
       }
     }
-
     fetchIngredientes();
   }, []);
 
@@ -44,13 +29,17 @@ function App() {
   const enviarSeleccion = async () => {
     const datos = { ingredientesSeleccionados: seleccion };
     try {
-      const respuesta = await fetch('http://localhost:5000/api/openai', {
+      const response = await fetch('http://localhost:5000/api/openai', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(datos)
       });
+      const data = await response.json()
+      console.log(data)
+      const objetoAnalizado = JSON.stringify(data)
+      setRespuesta(objetoAnalizado)
       if (respuesta.ok) {
         console.log('Datos enviados correctamente');
       } else {
@@ -72,8 +61,8 @@ function App() {
         </div>
       ))}
       <button onClick={enviarSeleccion}>ACEPTAR INGREDIENTES</button>
-      <h1>Respuesta de OpenAI</h1>
-      <p>{respuesta}</p>
+      <h1>{respuesta.titulo}</h1>
+      <p>{respuesta.ingredientes}</p>
     </div>
   );
 };

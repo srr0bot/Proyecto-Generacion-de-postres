@@ -1,32 +1,32 @@
 [
-    {
-      "id": 1,
-      "nombre": "Queso",
-      "categoria": "Lácteo"
-    },
-    {
-      "id": 2,
-      "nombre": "Salchicha",
-      "categoria": "Carnes"
-    },
-    {
-      "id": 3,
-      "nombre": "Nachos",
-      "categoria": "Snack"
-    },
-    {
-      "id": 4,
-      "nombre": "Guacamole",
-      "categoria": "Salsa"
-    },
-    {
-      "id": 5,
-      "nombre": "Pimienta",
-      "categoria": "Condimento"
-    },
-    {
-      "id": 6,
-      "nombre": "Ají",
-      "categoria": "Condimento"
-    }
-] 
+  {
+    "id": 1,
+    "nombre": "Chocolate",
+    "categoria": "Dulce"
+  },
+  {
+    "id": 2,
+    "nombre": "Fresas",
+    "categoria": "Fruta"
+  },
+  {
+    "id": 3,
+    "nombre": "Nata",
+    "categoria": "Lácteo"
+  },
+  {
+    "id": 4,
+    "nombre": "Vainilla",
+    "categoria": "Esencia"
+  },
+  {
+    "id": 5,
+    "nombre": "Azúcar",
+    "categoria": "Endulzante"
+  },
+  {
+    "id": 6,
+    "nombre": "Harina",
+    "categoria": "Base"
+  }
+]
