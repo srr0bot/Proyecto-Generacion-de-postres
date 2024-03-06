@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "nombre": "Queso",
+      "categoria": " lácteo"
+    },
+    {
+      "id": 2,
+      "nombre": "Lácteo",
+      "categoria": "carnes"
+    },
+    {
+      "id": 3,
+      "nombre": "Nachos",
+      "categoria": "Snack"
+    },
+    {
+      "id": 4,
+      "nombre": "Guacamole",
+      "categoria": "Snack"
+    },
+    {
+      "id": 5,
+      "nombre": "Pimienta",
+      "categoria": "snacks"
+    },
+    {
+      "id": 6,
+      "nombre": "Ají",
+      "categoria": "snacks"
+    }
+] 
