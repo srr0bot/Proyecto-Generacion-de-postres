@@ -2,12 +2,12 @@
     {
       "id": 1,
       "nombre": "Queso",
-      "categoria": " lácteo"
+      "categoria": "Lácteo"
     },
     {
       "id": 2,
-      "nombre": "Lácteo",
-      "categoria": "carnes"
+      "nombre": "Salchicha",
+      "categoria": "Carnes"
     },
     {
       "id": 3,
@@ -17,16 +17,16 @@
     {
       "id": 4,
       "nombre": "Guacamole",
-      "categoria": "Snack"
+      "categoria": "Salsa"
     },
     {
       "id": 5,
       "nombre": "Pimienta",
-      "categoria": "snacks"
+      "categoria": "Condimento"
     },
     {
       "id": 6,
       "nombre": "Ají",
-      "categoria": "snacks"
+      "categoria": "Condimento"
     }
 ] 
