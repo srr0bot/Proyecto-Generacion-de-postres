@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "primereact/resources/themes/arya-blue/theme.css";
-        
+     
+function Receta({ titulo, ingredientes, procedimiento }) {
+  return (
+    <div>
+      <h2>{titulo}</h2>
+      <p>{ingredientes}</p>
+      <p>{procedimiento}</p>
+    </div>
+  );
+}
+
 function App() {
   const [seleccion, setSeleccion] = useState({});
   const [ingredientes, setIngredientes] = useState([]);
@@ -38,8 +48,7 @@ function App() {
       });
       const data = await response.json()
       console.log(data)
-      const objetoAnalizado = JSON.stringify(data)
-      setRespuesta(objetoAnalizado)
+      setRespuesta(data)
       if (respuesta.ok) {
         console.log('Datos enviados correctamente');
       } else {
@@ -61,8 +70,7 @@ function App() {
         </div>
       ))}
       <button onClick={enviarSeleccion}>ACEPTAR INGREDIENTES</button>
-      <h1>{respuesta.titulo}</h1>
-      <p>{respuesta.ingredientes}</p>
+      <Receta titulo={respuesta.titulo} ingredientes={respuesta.ingredientes} procedimiento={respuesta.procedimiento} />
     </div>
   );
 };

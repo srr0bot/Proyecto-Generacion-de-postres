@@ -28,5 +28,50 @@
     "id": 6,
     "nombre": "Harina",
     "categoria": "Base"
+  },
+  {
+    "id": 7,
+    "nombre": "Levadura",
+    "categoria": "Agente leudante"
+  },
+  {
+    "id": 8,
+    "nombre": "Mantequilla",
+    "categoria": "Grasa"
+  },
+  {
+    "id": 9,
+    "nombre": "Huevos",
+    "categoria": "Huevo"
+  },
+  {
+    "id": 10,
+    "nombre": "Leche condensada",
+    "categoria": "Lácteo"
+  },
+  {
+    "id": 11,
+    "nombre": "Canela",
+    "categoria": "Condimento"
+  },
+  {
+    "id": 12,
+    "nombre": "Nueces",
+    "categoria": "Frutos secos"
+  },
+  {
+    "id": 13,
+    "nombre": "Miel",
+    "categoria": "Endulzante"
+  },
+  {
+    "id": 14,
+    "nombre": "Coco rallado",
+    "categoria": "Fruto seco"
+  },
+  {
+    "id": 15,
+    "nombre": "Yogur",
+    "categoria": "Lácteo"
   }
 ]
