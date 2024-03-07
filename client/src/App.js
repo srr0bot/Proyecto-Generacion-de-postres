@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "primereact/resources/themes/arya-blue/theme.css";
+import "primereact/resources/themes/lara-light-purple/theme.css";
 import myImage from '../src/images/1229080980.png';
+import './styles/engine.css';
+import { Button } from 'primereact/button';
+
      
 function Receta({ titulo, ingredientes, procedimiento }) {
   return (
@@ -66,13 +69,13 @@ function App() {
     <div>
       {ingredientes.map(ingrediente => (
         <div key={ingrediente.id}>
-          <label>
+          <label className="contenedor">
             <input type="checkbox" onChange={() => manejarSeleccion(ingrediente.nombre)}/>
             {ingrediente.nombre}
           </label>
         </div>
       ))}
-      <button onClick={enviarSeleccion}>ACEPTAR INGREDIENTES</button>
+      <Button className="boton-aceptar" onClick={enviarSeleccion} rounded label="Aceptar"/>
       <Receta titulo={respuesta.titulo} ingredientes={respuesta.ingredientes} procedimiento={respuesta.procedimiento} />
       {mostrarImagen && <img src={myImage} alt="Description" style={{ width: '100%', height: 'auto' }} />}
 
