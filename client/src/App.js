@@ -16,6 +16,7 @@ function App() {
   const [seleccion, setSeleccion] = useState({});
   const [ingredientes, setIngredientes] = useState([]);
   const [respuesta, setRespuesta] = useState([])
+  const [mostrarImagen, setMostrarImagen] = useState(false)
 
   useEffect(() => {
     async function fetchIngredientes() {
@@ -50,6 +51,7 @@ function App() {
       const data = await response.json()
       console.log(data)
       setRespuesta(data)
+      setMostrarImagen(true)
       if (respuesta.ok) {
         console.log('Datos enviados correctamente');
       } else {
@@ -72,8 +74,8 @@ function App() {
       ))}
       <button onClick={enviarSeleccion}>ACEPTAR INGREDIENTES</button>
       <Receta titulo={respuesta.titulo} ingredientes={respuesta.ingredientes} procedimiento={respuesta.procedimiento} />
-      <img src={myImage} alt="Description" style={{ width: '100%', height: 'auto' }} />
-    
+      {mostrarImagen && <img src={myImage} alt="Description" style={{ width: '100%', height: 'auto' }} />}
+
     </div>
   );
 

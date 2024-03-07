@@ -26,7 +26,7 @@ class ImageGenerator:
         print(prompt)
         
         answers = stability_api.generate(
-            prompt=f"genera una imagen de un postre elaborado con los siguientes ingredientes {prompt}",
+            prompt=f"Genera una imagen de un postre utilizando los siguientes ingredientes: {prompt}. Asegúrate de que la imagen sea lo más realista y precisa posible, teniendo en cuenta la decoración y otros aspectos fundamentales.",
             seed=1229080980,
             steps=50,
             cfg_scale=8.0,
