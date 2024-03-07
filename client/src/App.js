@@ -1,88 +1,94 @@
 import React, { useState, useEffect } from "react";
 import "primereact/resources/themes/lara-light-purple/theme.css";
-import myImage from '../src/images/1229080980.png';
-import './styles/engine.css';
-import { Button } from 'primereact/button';
-
-     
-function Receta({ titulo, ingredientes, procedimiento }) {
-  return (
-    <div>
-      <h2>{titulo}</h2>
-      <p>{ingredientes}</p>
-      <p>{procedimiento}</p>
-    </div>
-  );
-}
+import myImage from "../src/images/1229080980.png";
+import "./styles/engine.css";
+import { Button } from "primereact/button";
 
 function App() {
   const [seleccion, setSeleccion] = useState({});
   const [ingredientes, setIngredientes] = useState([]);
-  const [respuesta, setRespuesta] = useState([])
-  const [mostrarImagen, setMostrarImagen] = useState(false)
+  const [respuesta, setRespuesta] = useState([]);
+  const [mostrarImagen, setMostrarImagen] = useState(false);
+  const [mostrarTexto, setMostrarTexto] = useState(false);
 
   useEffect(() => {
     async function fetchIngredientes() {
       try {
-        const response = await fetch('/data/ingredients.json')
+        const response = await fetch("/data/ingredients.json");
         const data = await response.json();
-        setIngredientes(data)
+        setIngredientes(data);
       } catch (error) {
-        console.error('Error al cargar los ingredientes:', error)
+        console.error("Error al cargar los ingredientes:", error);
       }
     }
     fetchIngredientes();
   }, []);
 
   const manejarSeleccion = (nombre) => {
-    setSeleccion(prevSeleccion => ({
+    setSeleccion((prevSeleccion) => ({
       ...prevSeleccion,
-      [nombre]: !prevSeleccion[nombre]
+      [nombre]: !prevSeleccion[nombre],
     }));
   };
 
   const enviarSeleccion = async () => {
     const datos = { ingredientesSeleccionados: seleccion };
     try {
-      const response = await fetch('http://localhost:5000/api/openai', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5000/api/openai", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(datos)
+        body: JSON.stringify(datos),
       });
-      const data = await response.json()
-      console.log(data)
-      setRespuesta(data)
-      setMostrarImagen(true)
+      const data = await response.json();
+      console.log(data);
+      setRespuesta(data);
+      setMostrarImagen(true);
+      setMostrarTexto(true);
       if (respuesta.ok) {
-        console.log('Datos enviados correctamente');
+        console.log("Datos enviados correctamente");
       } else {
-        console.error('Error al enviar datos al servidor');
+        console.error("Error al enviar datos al servidor");
       }
     } catch (error) {
-      console.error('Error al realizar la solicitud:', error);
+      console.error("Error al realizar la solicitud:", error);
     }
   };
 
   return (
     <div>
-      {ingredientes.map(ingrediente => (
+      {ingredientes.map((ingrediente) => (
         <div key={ingrediente.id}>
           <label className="contenedor">
-            <input type="checkbox" onChange={() => manejarSeleccion(ingrediente.nombre)}/>
+            <input
+              type="checkbox"
+              onChange={() => manejarSeleccion(ingrediente.nombre)}
+            />
             {ingrediente.nombre}
           </label>
         </div>
       ))}
-      <Button className="boton-aceptar" onClick={enviarSeleccion} rounded label="Aceptar"/>
-      <Receta titulo={respuesta.titulo} ingredientes={respuesta.ingredientes} procedimiento={respuesta.procedimiento} />
-      {mostrarImagen && <img src={myImage} alt="Description" style={{ width: '100%', height: 'auto' }} />}
-
+      <Button
+        className="boton-aceptar"
+        onClick={enviarSeleccion}
+        rounded
+        label="Aceptar"
+      />
+      <h2>{respuesta.titulo}</h2>
+      {mostrarTexto && <h3 label="Ingredientes:">Ingredientes:</h3>}
+      <p className="ingredientes">{respuesta.ingredientes}</p>
+      {mostrarTexto && <h3 label="Procedimiento:">Procedimiento:</h3>}
+      <p>{respuesta.procedimiento}</p>
+      {mostrarImagen && (
+        <img
+          src={myImage}
+          alt="Description"
+          style={{ width: "100%", height: "auto" }}
+        />
+      )}
     </div>
   );
-
-  
-};
+}
 
 export default App;

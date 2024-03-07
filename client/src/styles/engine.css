@@ -8,7 +8,11 @@
     font-family: Arial, Helvetica, sans-serif;
     font-style: bold;
     color: white;
-    
+
     max-width: 600px;
     margin: 10px;
+}
+
+.ingredientes{
+    font-style: italic;
 }
