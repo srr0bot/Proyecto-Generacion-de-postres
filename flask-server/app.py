@@ -33,7 +33,6 @@ def ObtenerIngredientes():
                 # Separar la respuesta en título, ingredientes y procedimiento
                 titulo, contenido = response.split("Ingredientes:")
                 ingredientes, procedimiento = contenido.split("Instrucciones:")
-
                 # Eliminar espacios en blanco al principio y al final de las cadenas
                 titulo = titulo.strip()
                 ingredientes = ingredientes.strip()
@@ -56,7 +55,6 @@ def ObtenerIngredientes():
                 return jsonify(receta_dict)
             except OpenAIError as e:
                 print(f"Error al inicializar la instancia de OpenAI: {e}")
-
 
 
 if __name__ == '__main__':

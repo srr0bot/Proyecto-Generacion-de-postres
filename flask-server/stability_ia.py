@@ -5,7 +5,6 @@ from PIL import Image
 from stability_sdk import client
 import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
 
-
 class ImageGenerator:
     def __init__(self):
         pass
@@ -27,7 +26,7 @@ class ImageGenerator:
         print(prompt)
         
         answers = stability_api.generate(
-            prompt=f"una imagen de un postre elaborado con los siguientes ingredientes {prompt}",
+            prompt=f"genera una imagen de un postre elaborado con los siguientes ingredientes {prompt}",
             seed=1229080980,
             steps=50,
             cfg_scale=8.0,
@@ -44,5 +43,7 @@ class ImageGenerator:
                         "Your request activated the API's safety filters and could not be processed."
                          "Please modify the prompt and try again.")
                 if artifact.type == generation.ARTIFACT_IMAGE:
-                 img = Image.open(io.BytesIO(artifact.binary))
-                img.save(str(artifact.seed)+ ".png")
+                    ruta = "../client/src/images/"
+                    ruta_completa = os.path.join(ruta, str(artifact.seed)+ ".png")
+                    img = Image.open(io.BytesIO(artifact.binary))
+                    img.save(ruta_completa)
