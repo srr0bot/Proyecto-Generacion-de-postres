@@ -3,7 +3,8 @@ from flask_cors import CORS
 from openai import OpenAI, OpenAIError
 import os
 from dotenv import load_dotenv
-import json
+from stability_ia import ImageGenerator
+
 
 app = Flask(__name__)
 CORS(app)
@@ -43,6 +44,9 @@ def ObtenerIngredientes():
                 print("Ingredientes:", ingredientes)
                 print("Procedimiento:", procedimiento)
                 
+                imageGenerator = ImageGenerator()
+                imageGenerator.generate_image(prompt=ingredientes)
+                
                 receta_dict = {
                     'titulo': titulo,
                     'ingredientes': ingredientes,
@@ -52,6 +56,7 @@ def ObtenerIngredientes():
                 return jsonify(receta_dict)
             except OpenAIError as e:
                 print(f"Error al inicializar la instancia de OpenAI: {e}")
+
 
 
 if __name__ == '__main__':

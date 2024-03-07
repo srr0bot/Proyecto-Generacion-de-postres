@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "primereact/resources/themes/arya-blue/theme.css";
+import myImage from '../src/images/1229080980.png';
      
 function Receta({ titulo, ingredientes, procedimiento }) {
   return (
@@ -71,8 +72,12 @@ function App() {
       ))}
       <button onClick={enviarSeleccion}>ACEPTAR INGREDIENTES</button>
       <Receta titulo={respuesta.titulo} ingredientes={respuesta.ingredientes} procedimiento={respuesta.procedimiento} />
+      <img src={myImage} alt="Description" style={{ width: '100%', height: 'auto' }} />
+    
     </div>
   );
+
+  
 };
 
 export default App;
